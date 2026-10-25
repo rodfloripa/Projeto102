@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MLOps Data Drift Report - Olist Churn</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; color: #333; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        .alert { padding: 15px; margin-bottom: 20px; border-radius: 4px; font-weight: bold; }
+        .danger { background-color: #f8d7da; color: #721c24; }
+        .success { background-color: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Relatório de Monitoramento de Data Drift</h1>
+        <p><b>Dataset:</b> Olist E-commerce Churn</p>
+        <p><b>Método:</b> Kolmogorov-Smirnov Test (p < 0.05)</p>
+        
+        <div class='alert danger'>⚠️ ALERTA: Data Drift detectado em uma ou mais features do modelo!</div>
+        
+        <h2>Resumo por Feature</h2>
+        <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>feature</th>
+      <th>p_value</th>
+      <th>drift_detected</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>recency_days</td>
+      <td>0.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>frequency</td>
+      <td>1.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>monetary_avg</td>
+      <td>1.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>freight_avg</td>
+      <td>1.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>items_avg</td>
+      <td>1.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>lifespan_days</td>
+      <td>1.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</body>
+</html>

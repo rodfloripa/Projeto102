@@ -1,0 +1,24 @@
+artifact_path: /home/rodney/Projetos Github/churn-mlops-olist/mlruns/1/models/m-62443ca28fb24c37a2019d66d173f05b/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.4
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types:
+    - sklearn.tree._tree.Tree
+mlflow_version: 3.17.2
+model_id: m-62443ca28fb24c37a2019d66d173f05b
+model_size_bytes: 4107673
+model_uuid: m-62443ca28fb24c37a2019d66d173f05b
+prompts: null
+run_id: 19e9e4381455462f8d8836bfa27a1a25
+utc_time_created: '2026-10-25 15:17:54.359461'

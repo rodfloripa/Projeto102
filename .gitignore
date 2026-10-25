@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.py[cod]
+data/*.csv
+drift_report.html
+model/model.pkl
+mlruns/
+.vscode/
+.idea/

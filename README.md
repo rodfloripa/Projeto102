@@ -79,6 +79,10 @@ python src/train.py
 python -c "import pandas as pd; df = pd.read_csv('data/reference_data.csv'); df['recency_days'] *= 1.5; df.to_csv('data/current_batch.csv', index=False)"
 python src/drift.py
 ```
+Drift
+<p align="center">
+  <img src="https://github.com/rodfloripa/Projeto102/blob/main/fig01.png">
+</p>
 
 ### 4.4. Iniciar a API e os Serviços
 

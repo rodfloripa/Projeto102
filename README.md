@@ -107,13 +107,26 @@ Chamando a API
 
 <p align="justify">A árvore de diretórios e as descrições acima documentam a estrutura prevista para o projeto fornecido. Para confirmar detalhes de implementação — como os nomes exatos dos campos de entrada da API, os critérios numéricos de validação, as métricas do modelo e os limiares usados para sinalizar desvio — é necessário consultar os respectivos arquivos Python.</p>
 
-## 7. Subir no AWS EC2 
+## 7. Opções de Deploy na AWS
 
+Você pode escolher entre duas abordagens principais para publicar o seu pipeline de MLOps na AWS, dependendo do nível de arquitetura que deseja demonstrar:
+
+### Opção A: AWS EC2 (A forma mais rápida e idêntica ao seu PC)
 Como você já roda tudo via Docker Compose no Ubuntu localmente, o processo na nuvem é quase o mesmo:
-
 1. Subir uma máquina virtual EC2 (Ubuntu).
 2. Instalar o Docker e o Docker Compose nela.
 3. Clonar o seu repositório do GitHub (`Projeto102`).
 4. Rodar `docker-compose up -d`.
 
 **Vantagem:** É simples, barato (usa instâncias `t3.medium` ou similar) e roda exatamente como no seu ambiente de desenvolvimento.
+
+---
+
+### Opção B: SageMaker Model Registry & Endpoints (O padrão enterprise)
+Para uma arquitetura corporativa e nativa de Machine Learning:
+1. Compactar o modelo treinado em `model.tar.gz` e enviá-lo para um bucket S3.
+2. Registrar a versão do modelo utilizando o **Amazon SageMaker Model Registry** (`ModelPackageGroup`).
+3. Gerenciar o ciclo de vida, status de aprovação (`Approved`/`Pending`) e linhagem dos artefatos.
+4. Realizar o deploy direto do Model Registry para um Endpoint gerenciado do SageMaker utilizando imagens otimizadas de inferência do Scikit-Learn.
+
+**Vantagem:** Governança completa de modelos, auditoria de versões e separação total entre ambiente de treino e infraestrutura de inferência escalável.

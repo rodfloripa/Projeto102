@@ -1,6 +1,6 @@
 # MLOps Churn Pipeline — Olist
 
-<p align="justify">Pipeline de aprendizado de máquina de ponta a ponta, com foco em robustez de engenharia, validação rigorosa de dados, monitoramento de desvio de dados (<em>Data Drift</em>) e conteinerização.</p>
+<p align="justify">Pipeline de aprendizado de máquina de ponta a ponta, com foco em robustez de engenharia, validação rigorosa de dados, monitoramento de desvio de dados (<em>Data Drift</em>) e conteinerização.O projeto implementa um pipeline de MLOps de ponta a ponta utilizando a base de e-commerce da Olist para **prever o churn (abandono) de clientes** com base em seu comportamento histórico de compras (métricas RFM). Como **dados de entrada**, o sistema consome registros transacionais de pedidos e itens — processando variáveis como recência, frequência, valor monetário médio e tempo de relacionamento —, e gera como **saída** predições em tempo real via API (probabilidade e classe de churn) acompanhadas de monitoramento automatizado de desvio de dados (*Data Drift*).</p>
 
 ## 1. Arquitetura
 

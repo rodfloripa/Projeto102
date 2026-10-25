@@ -127,13 +127,13 @@ Como você já roda tudo via Docker Compose no Ubuntu localmente, o processo na 
 Para uma arquitetura corporativa e nativa de Machine Learning, o fluxo de arquivos e serviços funciona da seguinte forma:
 
 #### 📂 O que vai para a AWS e onde fica:
-1. **Os Dados (Amazon S3):** 
-   * Você faz o upload dos datasets brutos da Olist (`.csv`) e dos dados processados para um **Bucket do Amazon S3**.
+1. **Os Dados de Referência para Drift e Validação (Amazon S3):** 
+   * Você faz o upload dos datasets processados ou de referência para um **Bucket do Amazon S3**, servindo de base estatística para o monitoramento de desvio (*Data Drift*).
 2. **O Artefato do Modelo (Amazon S3):** 
    * Após o treinamento, o seu modelo é compactado em um arquivo chamado `model.tar.gz` e enviado para o **Amazon S3**.
 3. **Registro e Governança (SageMaker Model Registry):** 
    * Você registra a versão do modelo no `ModelPackageGroup`, vinculando os metadados, métricas de avaliação e o ponteiro direto que aponta para o `model.tar.gz` no S3.
-4. **Inferência (SageMaker Endpoint):** 
-   * O SageMaker utiliza o artefato do S3 em conjunto com uma imagem Docker otimizada de inferência para subir um Endpoint gerenciado que recebe requisições JSON em tempo real.
+4. **Inferência e Monitoramento (SageMaker Endpoint & Model Monitor):** 
+   * O SageMaker utiliza o artefato do S3 com uma imagem Docker de inferência para subir o Endpoint em tempo real, enquanto o Model Monitor compara os dados recebidos em produção com a referência do S3 para detectar *Data Drift*.
 
-**Vantagem:** Separação estrita entre dados e código, governança completa de modelos, auditoria de versões e infraestrutura de inferência escalável gerenciada inteiramente pela AWS.
+**Vantagem:** Separação estrita entre dados e código, governança completa de modelos, auditoria de versões, monitoramento contínuo de drift e infraestrutura escalável gerenciada inteiramente pela AWS.

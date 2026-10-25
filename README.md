@@ -106,3 +106,14 @@ Chamando a API
 <p align="justify">A execução dos comandos depende da presença dos arquivos de dados esperados e dos artefatos produzidos nas etapas anteriores. Em particular, a simulação de desvio pressupõe que <code>data/reference_data.csv</code> já exista e contenha a coluna <code>recency_days</code>. O código de treinamento, a API e o monitoramento devem utilizar nomes de arquivos e atributos consistentes entre si.</p>
 
 <p align="justify">A árvore de diretórios e as descrições acima documentam a estrutura prevista para o projeto fornecido. Para confirmar detalhes de implementação — como os nomes exatos dos campos de entrada da API, os critérios numéricos de validação, as métricas do modelo e os limiares usados para sinalizar desvio — é necessário consultar os respectivos arquivos Python.</p>
+
+## 7. Subir no AWS EC2 
+
+Como você já roda tudo via Docker Compose no Ubuntu localmente, o processo na nuvem é quase o mesmo:
+
+1. Subir uma máquina virtual EC2 (Ubuntu).
+2. Instalar o Docker e o Docker Compose nela.
+3. Clonar o seu repositório do GitHub (`Projeto102`).
+4. Rodar `docker-compose up -d`.
+
+**Vantagem:** É simples, barato (usa instâncias `t3.medium` ou similar) e roda exatamente como no seu ambiente de desenvolvimento.

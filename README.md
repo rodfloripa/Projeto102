@@ -86,7 +86,11 @@ python src/drift.py
 
 ```bash
 docker-compose up --build
-```
+
+Chamando a API
+<p align="center">
+  <img src="https://github.com/rodfloripa/Projeto102/blob/main/fig0.png">
+</p>```
 
 ## 5. Fluxo de Execução
 

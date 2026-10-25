@@ -123,10 +123,17 @@ Como você já roda tudo via Docker Compose no Ubuntu localmente, o processo na 
 ---
 
 ### Opção B: SageMaker Model Registry & Endpoints (O padrão enterprise)
-Para uma arquitetura corporativa e nativa de Machine Learning:
-1. Compactar o modelo treinado em `model.tar.gz` e enviá-lo para um bucket S3.
-2. Registrar a versão do modelo utilizando o **Amazon SageMaker Model Registry** (`ModelPackageGroup`).
-3. Gerenciar o ciclo de vida, status de aprovação (`Approved`/`Pending`) e linhagem dos artefatos.
-4. Realizar o deploy direto do Model Registry para um Endpoint gerenciado do SageMaker utilizando imagens otimizadas de inferência do Scikit-Learn.
 
-**Vantagem:** Governança completa de modelos, auditoria de versões e separação total entre ambiente de treino e infraestrutura de inferência escalável.
+Para uma arquitetura corporativa e nativa de Machine Learning, o fluxo de arquivos e serviços funciona da seguinte forma:
+
+#### 📂 O que vai para a AWS e onde fica:
+1. **Os Dados (Amazon S3):** 
+   * Você faz o upload dos datasets brutos da Olist (`.csv`) e dos dados processados para um **Bucket do Amazon S3**.
+2. **O Artefato do Modelo (Amazon S3):** 
+   * Após o treinamento, o seu modelo é compactado em um arquivo chamado `model.tar.gz` e enviado para o **Amazon S3**.
+3. **Registro e Governança (SageMaker Model Registry):** 
+   * Você registra a versão do modelo no `ModelPackageGroup`, vinculando os metadados, métricas de avaliação e o ponteiro direto que aponta para o `model.tar.gz` no S3.
+4. **Inferência (SageMaker Endpoint):** 
+   * O SageMaker utiliza o artefato do S3 em conjunto com uma imagem Docker otimizada de inferência para subir um Endpoint gerenciado que recebe requisições JSON em tempo real.
+
+**Vantagem:** Separação estrita entre dados e código, governança completa de modelos, auditoria de versões e infraestrutura de inferência escalável gerenciada inteiramente pela AWS.
